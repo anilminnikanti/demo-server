@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mypack.springboot.controller.base.BaseController;
@@ -24,22 +25,34 @@ public class PersonController extends BaseController {
 	public @ResponseBody String hello() {
 		return "Hello, This message is from server";
 	}
+	
+	@RequestMapping(path = "/getPerson", method = RequestMethod.GET)
+	public PersonEntity getPerson(@RequestParam("personId") Long personId) {
+		return personService.getPerson(personId);
+	}
 
 	@RequestMapping(path = "/addPerson", method = RequestMethod.POST)
-	public PersonEntity add(@RequestBody PersonEntity person) {
+	public PersonEntity addPerson(@RequestBody PersonEntity person) {
 		return personService.addPerson(person);
+	}
+	
+	@RequestMapping(path = "/updatePerson", method = RequestMethod.POST)
+	public PersonEntity updatePerson(@RequestBody PersonEntity person) {
+		return personService.updatePerson(person);
+	}
+	
+	@RequestMapping(path = "/deletePerson", method = RequestMethod.DELETE)
+	public String deletePerson(@RequestParam("personId") String personId) {
+		try {
+			personService.deletePerson(Long.valueOf(personId));
+		} catch (Exception e) {
+			return "not deleted";
+		}
+		return "deletd";
 	}
 
 	@RequestMapping(path = "/findAllPersons", method = RequestMethod.GET)
 	public @ResponseBody List<PersonEntity> getAllPersons() {
-
-		/*PersonEntity person = new PersonEntity();
-		person.setFirstName("Mano");
-		person.setLastName("Nimmi");
-		person.setMailId("anil.minnikanti@gmail.com");
-		person.setPhoneNumber("1213232321");
-		personService.addPerson(person);*/
-
 		return personService.getAllPersons();
 	}
 

@@ -22,4 +22,16 @@ public class PersonService {
 		return personDao.save(person);
 	}
 
+	public PersonEntity updatePerson(PersonEntity person) {
+		return personDao.save(person);
+	}
+
+	public void deletePerson(Long personId) {
+		personDao.delete(personId);
+	}
+
+	public PersonEntity getPerson(Long personId) {
+		return personDao.getOne(personId);
+	}
+
 }

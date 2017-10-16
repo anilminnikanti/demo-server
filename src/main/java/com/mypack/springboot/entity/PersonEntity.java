@@ -15,7 +15,7 @@ public class PersonEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PERSON_ID")
-	private int id;
+	private long id;
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -29,11 +29,11 @@ public class PersonEntity extends BaseEntity {
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
