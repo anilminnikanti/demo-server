@@ -31,7 +31,7 @@ public class PersonService {
 	}
 
 	public PersonEntity getPerson(Long personId) {
-		return personDao.getOne(personId);
+		return personDao.findOne(personId);
 	}
 
 }

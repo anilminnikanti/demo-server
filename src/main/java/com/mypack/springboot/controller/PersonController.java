@@ -15,7 +15,7 @@ import com.mypack.springboot.entity.PersonEntity;
 import com.mypack.springboot.service.PersonService;
 
 @Controller
-@RequestMapping(path = "/demo/persons")
+@RequestMapping(path = "/demo/person")
 public class PersonController extends BaseController {
 
 	@Autowired
@@ -27,28 +27,29 @@ public class PersonController extends BaseController {
 	}
 	
 	@RequestMapping(path = "/getPerson", method = RequestMethod.GET)
-	public PersonEntity getPerson(@RequestParam("personId") Long personId) {
+	public @ResponseBody PersonEntity getPerson(@RequestParam("personId") Long personId) {
 		return personService.getPerson(personId);
 	}
 
 	@RequestMapping(path = "/addPerson", method = RequestMethod.POST)
-	public PersonEntity addPerson(@RequestBody PersonEntity person) {
+	public @ResponseBody PersonEntity addPerson(@RequestBody PersonEntity person) {
 		return personService.addPerson(person);
 	}
 	
 	@RequestMapping(path = "/updatePerson", method = RequestMethod.POST)
-	public PersonEntity updatePerson(@RequestBody PersonEntity person) {
+	public @ResponseBody PersonEntity updatePerson(@RequestBody PersonEntity person) {
 		return personService.updatePerson(person);
 	}
 	
 	@RequestMapping(path = "/deletePerson", method = RequestMethod.DELETE)
-	public String deletePerson(@RequestParam("personId") String personId) {
+	public @ResponseBody String deletePerson(@RequestParam("personId") String personId) {
 		try {
 			personService.deletePerson(Long.valueOf(personId));
 		} catch (Exception e) {
-			return "not deleted";
+			return "NotDeleted";
+			//Log the error
 		}
-		return "deletd";
+		return "deleted";
 	}
 
 	@RequestMapping(path = "/findAllPersons", method = RequestMethod.GET)

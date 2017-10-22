@@ -12,6 +12,7 @@ import com.mypack.springboot.entity.ToDoEntity;
 import com.mypack.springboot.service.ToDoService;
 
 @RestController
+@RequestMapping("/demo/todo")
 public class ToDoController extends BaseController {
 
 	@Autowired
@@ -22,12 +23,8 @@ public class ToDoController extends BaseController {
 		return toDoService.addToDo(toDo);
 	}
 
-	@RequestMapping(path = "/findAllToDo", method = RequestMethod.GET)
+	@RequestMapping(path = "/getAllToDo", method = RequestMethod.GET)
 	public List<ToDoEntity> findAllToDo() {
-		/*ToDoEntity todo = new ToDoEntity();
-		todo.setItem("Complete Demo Project");
-		toDoService.addToDo(todo);*/
-		
 		return toDoService.listAllToDo();
 	}
 
