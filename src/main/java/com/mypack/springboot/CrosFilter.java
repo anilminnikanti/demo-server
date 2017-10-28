@@ -27,7 +27,8 @@ public class CrosFilter implements Filter {
 	@Override
 	public void doFilter(final ServletRequest req, final ServletResponse res, final FilterChain chain)
 			throws IOException, ServletException {
-		final HttpServletResponse response = (HttpServletResponse) res;
+		chain.doFilter(req, res);
+		/*final HttpServletResponse response = (HttpServletResponse) res;
 	    response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
 
 	    // without this header jquery.ajax calls returns 401 even after successful login and SSESSIONID being successfully stored.
@@ -43,7 +44,7 @@ public class CrosFilter implements Filter {
 	        chain.doFilter(req, res);
 	    } else {
 	        // do not continue with filter chain for options requests
-	    }
+	    }*/
 	}
 
 	@Override

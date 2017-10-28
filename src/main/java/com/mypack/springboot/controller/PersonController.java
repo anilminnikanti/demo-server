@@ -15,16 +15,16 @@ import com.mypack.springboot.entity.PersonEntity;
 import com.mypack.springboot.service.PersonService;
 
 @Controller
-@RequestMapping(path = "/demo/person")
+@RequestMapping(path = "/person")
 public class PersonController extends BaseController {
 
 	@Autowired
 	private PersonService personService;
 
-	@RequestMapping(path = "/")
+	/*@RequestMapping(path = "/")
 	public @ResponseBody String hello() {
 		return "Hello, This message is from server";
-	}
+	}*/
 	
 	@RequestMapping(path = "/getPerson", method = RequestMethod.GET)
 	public @ResponseBody PersonEntity getPerson(@RequestParam("personId") Long personId) {

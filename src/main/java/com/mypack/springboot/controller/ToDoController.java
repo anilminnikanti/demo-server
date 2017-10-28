@@ -12,7 +12,7 @@ import com.mypack.springboot.entity.ToDoEntity;
 import com.mypack.springboot.service.ToDoService;
 
 @RestController
-@RequestMapping("/demo/todo")
+@RequestMapping("/todo")
 public class ToDoController extends BaseController {
 
 	@Autowired
